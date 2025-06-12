@@ -1,3 +1,4 @@
+/* REGRA GERAL */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -8,84 +9,97 @@ body {
   background-size: cover;
   background-position: center;
   color: #111;
+  overflow-x: hidden;
 }
 
-body.home {
-  position: relative;
-  background: url("indeximage.jpg") no-repeat center center fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: auto; /* aumenta o zoom da imagem */
-}
-
-body.home::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
-  z-index: 0;
-}
-body.mensagem {
-  position: relative;
-  background: url("indeximage.jpg") no-repeat center center fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: auto; /* aumenta o zoom da imagem */
-}
-body.mensagem::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
-  z-index: 0;
-}
-body.tempo {
-  position: relative;
-  background: url("indeximage.jpg") no-repeat center center fixed;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: auto; /* aumenta o zoom da imagem */
-}
-body.tempo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
-  z-index: 0;
-}
+body.home,
+body.mensagem,
+body.tempo,
 body.fotos {
   position: relative;
   background: url("indeximage.jpg") no-repeat center center fixed;
-  font-family: "Segoe UI", sans-serif;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
-  background-repeat: no-repeat;
-  background-position: center center;
   background-attachment: fixed;
-  background-size: auto; /* aumenta o zoom da imagem */
+  background-size: cover; /* Melhor para preencher a tela em mobile */
 }
+
+body.home::before,
+body.mensagem::before,
+body.tempo::before,
 body.fotos::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 0;
 }
+
+body.fotos {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* COMPONENTES */
+.overlay,
+.content {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+.nav-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 10px;
+  border: 2px solid #000;
+  background: transparent;
+  color: #000;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* GALERIA */
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.galeria img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* CARROSSEL */
 .carousel {
   position: relative;
   max-width: 90vw;
@@ -118,18 +132,12 @@ body.fotos::before {
   border-radius: 50%;
 }
 
-.nav.left {
-  left: 10px;
-}
-
-.nav.right {
-  right: 10px;
-}
+.nav.left { left: 10px; }
+.nav.right { right: 10px; }
 
 .dots {
   margin-top: 10px;
 }
-
 .dot {
   height: 10px;
   width: 10px;
@@ -140,75 +148,52 @@ body.fotos::before {
   cursor: pointer;
   transition: background-color 0.3s;
 }
-
 .dot.active {
   background-color: #000;
 }
 
-.overlay {
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
-  border-radius: 20px;
-  padding: 40px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* borda suave */
-  color: #000;
-}
-
-.nav-buttons {
-  margin-top: 20px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  margin: 10px;
-  border: 2px solid #000;
-  background: transparent;
-  color: #000;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-.content {
-  position: relative;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.2); /* leve branco translúcido */
-  backdrop-filter: blur(10px); /* efeito vidro */
-  -webkit-backdrop-filter: blur(10px); /* suporte Safari */
-  border-radius: 20px;
-  padding: 40px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.3); /* borda suave */
-  color: #000;
-}
-
+/* TIMER */
 .timer {
   font-size: 1.5rem;
   margin: 20px 0;
 }
 
-.galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+/* MEDIA QUERIES - RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .overlay,
+  .content {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 7vw;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 12px;
+  }
+
+  .carousel {
+    max-width: 95vw;
+    max-height: 60vh;
+  }
+
+  .galeria img {
+    width: 100px;
+    height: 100px;
+  }
 }
-.galeria img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+
+@media (max-width: 480px) {
+  .btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .galeria img {
+    width: 90px;
+    height: 90px;
+  }
 }
->>>>>>> origin/master
