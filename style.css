@@ -14,21 +14,22 @@ body {
 
 body.home,
 body.mensagem,
+body.tempo,
 body.fotos {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 20px;
   background: url("indeximage.jpg") no-repeat center center fixed;
   background-attachment: fixed;
   background-size: cover; /* Melhor para preencher a tela em mobile */
 }
-body.tempo {
-  display: flex;
-  justify-content: center;
-  background: url("indeximage.jpg") no-repeat center center fixed;
-  align-items: center;
-  flex-direction: column; /* Garante alinhamento vertical em coluna */
-  min-height: 100vh;
-  padding: 20px;
-}
+
 
 body.home::before,
 body.mensagem::before,
