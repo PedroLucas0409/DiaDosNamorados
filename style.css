@@ -14,12 +14,20 @@ body {
 
 body.home,
 body.mensagem,
-body.tempo,
 body.fotos {
   position: relative;
   background: url("indeximage.jpg") no-repeat center center fixed;
   background-attachment: fixed;
   background-size: cover; /* Melhor para preencher a tela em mobile */
+}
+body.tempo {
+  display: flex;
+  justify-content: center;
+  background: url("indeximage.jpg") no-repeat center center fixed;
+  align-items: center;
+  flex-direction: column; /* Garante alinhamento vertical em coluna */
+  min-height: 100vh;
+  padding: 20px;
 }
 
 body.home::before,
